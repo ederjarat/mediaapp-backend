@@ -7,6 +7,8 @@ import java.util.List;
 import com.mitocode.exception.ModeloNotFoundException;
 import com.mitocode.model.Rol;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +33,12 @@ public class MenuController {
 		menues = service.listar();
 		return new ResponseEntity<List<Menu>>(menues, HttpStatus.OK);
 	}
-	
+
+	@GetMapping(value = "/pageable",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Page<Menu>> listarPageable(Pageable pageable) {
+		return new ResponseEntity<>(service.listarPageable(pageable), HttpStatus.OK);
+	}
+
 	@PostMapping(value = "/usuario", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Menu>> listar(@RequestBody String nombre) {
 		List<Menu> menues = new ArrayList<>();
