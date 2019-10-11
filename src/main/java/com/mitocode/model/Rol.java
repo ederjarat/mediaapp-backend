@@ -1,21 +1,19 @@
 package com.mitocode.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "rol")
 public class Rol {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idRol;
 
-	@Column(name = "nombre")
+	@Column(name = "nombre", length = 50, nullable = false)
 	private String nombre;
 
-	@Column(name = "descripcion")
+	@Column(name = "descripcion", length = 120, nullable = false)
 	private String descripcion;
 
 	public Integer getIdRol() {

@@ -2,7 +2,9 @@ package com.mitocode.controller;
 
 import com.mitocode.exception.ModeloNotFoundException;
 import com.mitocode.model.Rol;
+import com.mitocode.model.Usuario;
 import com.mitocode.service.IRolService;
+import com.mitocode.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -67,4 +69,6 @@ public class RolController {
         rolService.eliminar(idRol);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }
