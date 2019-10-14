@@ -46,6 +46,15 @@ public class MenuController {
 		return new ResponseEntity<List<Menu>>(menues, HttpStatus.OK);
 	}
 
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Menu> leer(@PathVariable("id") Integer id) {
+		Menu menues = null;
+		menues = service.leer(id);
+		if(menues == null)
+			throw new ModeloNotFoundException("NO SE ENCONTRO EL MENU CON ID: "+ id);
+		return new ResponseEntity<Menu>(menues, HttpStatus.OK);
+	}
+
 	@PostMapping
 	public ResponseEntity<Object> registrar(@Valid @RequestBody Menu menu) {
 		Menu nuevoMenu = service.registrar(menu);
